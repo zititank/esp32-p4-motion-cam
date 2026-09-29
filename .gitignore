@@ -1,0 +1,26 @@
+# ESP-IDF build output and generated config
+build/
+managed_components/
+sdkconfig
+sdkconfig.old
+# holds absolute local paths for override_path components
+dependencies.lock
+
+# editor / tooling
+.cache/
+.vscode/
+.idea/
+compile_commands.json
+
+# host tests and simulation intermediates
+test/host/build/
+test/host/*.out
+tools/sim/out/
+tools/sim/*.o
+tools/sim/motion_sim
+*.gif.tmp
+
+# misc
+err
+*.log
+.DS_Store
