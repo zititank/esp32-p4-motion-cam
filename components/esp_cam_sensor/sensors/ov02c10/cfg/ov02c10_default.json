@@ -2401,6 +2401,28 @@
                 "mode": "part",
                 "ac_freq": 50
             },
+            "f_n0": 0.32,
+            "f_m0": 0.42,
+            "mode": "high_light_priority",
+            "high_light_priority": {
+                "low_threshold": 119,
+                "high_threshold": 202,
+                "weight_offset": 5,
+                "luma_offset": -3
+            },
+            "low_light_priority": {
+                "low_threshold": 49,
+                "high_threshold": 64,
+                "weight_offset": 5,
+                "luma_offset": 1
+            },
+            "light_threshold_priority": [
+                {"luma_threshold": 20, "weight_offset": 1},
+                {"luma_threshold": 55, "weight_offset": 2},
+                {"luma_threshold": 95, "weight_offset": 3},
+                {"luma_threshold": 155, "weight_offset": 4},
+                {"luma_threshold": 235, "weight_offset": 5}
+            ],
             "luma_adjust": {
                 "target_low": 105,
                 "target_high": 121,

@@ -1,3 +1,13 @@
+/*
+ * SPDX-License-Identifier: GPL-2.0-only
+ *
+ * OV02C10 1920x1080 RAW10 2-lane register table, derived from Intel's OV02C10
+ * Linux driver (Copyright (c) 2022 Intel Corporation, author Hao Yao, GPL-2.0,
+ * https://github.com/intel/ipu6-drivers/blob/master/drivers/media/i2c/ov02c10.c,
+ * later upstreamed to mainline Linux as drivers/media/i2c/ov02c10.c) and
+ * adapted to the esp_cam_sensor API.
+ */
+
 #pragma once
 #include "ov02c10_regs.h"
 #include "esp_cam_sensor_types.h"

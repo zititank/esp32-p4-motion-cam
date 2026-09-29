@@ -1,14 +1,37 @@
 CONFIG_IDF_TARGET="esp32p4"
 CONFIG_ESPTOOLPY_FLASHSIZE_16MB=y
 
+# Chip and CPU
+# The JC8012P4A1C ships with pre-v3 ESP32-P4 silicon.
+CONFIG_ESP32P4_SELECTS_REV_LESS_V3=y
+# CONFIG_ESP32P4_REV_MIN_1 => REV_MIN_FULL=1, i.e. minimum chip revision v0.1, as in the bring-up sdkconfig.
+CONFIG_ESP32P4_REV_MIN_1=y
+# 360 MHz CPU clock, the setting used during bring-up.
+CONFIG_ESP_DEFAULT_CPU_FREQ_MHZ_360=y
+
 # PSRAM
 CONFIG_SPIRAM=y
 CONFIG_SPIRAM_MODE_HEX=y
 CONFIG_SPIRAM_SPEED_200M=y
+# Let plain malloc() fall back to PSRAM for large buffers.
+CONFIG_SPIRAM_USE_MALLOC=y
+# Allocations up to 16 KB stay in internal RAM.
+CONFIG_SPIRAM_MALLOC_ALWAYSINTERNAL=16384
+# Keep 32 KB of internal RAM free for DMA and driver allocations.
+CONFIG_SPIRAM_MALLOC_RESERVE_INTERNAL=32768
+
+# Task watchdog
+# Longer timeout and no panic: a mitigation for resets during bring-up, not a fix.
+CONFIG_ESP_TASK_WDT_TIMEOUT_S=20
+# Log a watchdog timeout instead of rebooting.
+# CONFIG_ESP_TASK_WDT_PANIC is not set
 
 # Video pipeline
 CONFIG_ESP_VIDEO_ENABLE_ISP_PIPELINE_CONTROLLER=y
-CONFIG_ESP_VIDEO_ENABLE_CSI_DRIVER=y
+CONFIG_ESP_VIDEO_ENABLE_MIPI_CSI_VIDEO_DEVICE=y
 
-# THIS IS THE ONE THAT MATTERS:
+# Camera sensor
+CONFIG_CAMERA_OV02C10=y
 CONFIG_CAMERA_OV02C10_AUTO_DETECT_MIPI_INTERFACE_SENSOR=y
+# Embed sensors/ov02c10/cfg/ov02c10_default.json as the ISP tuning file.
+CONFIG_CAMERA_OV02C10_DEFAULT_IPA_JSON_CONFIGURATION_FILE=y

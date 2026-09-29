@@ -69,19 +69,9 @@ if(CONFIG_CAMERA_STI2250)
 endif()
 
 if(CONFIG_CAMERA_OV02C10)
-      list(APPEND srcs "sensors/ov02c10/ov02c10.c")
-      list(APPEND include_dirs "sensors/ov02c10/include")
-      list(APPEND priv_include_dirs "sensors/ov02c10/private_include")
-
-      if(CONFIG_CAMERA_OV02C10_DEFAULT_IPA_JSON_CONFIGURATION_FILE)
-          idf_build_set_property(ESP_IPA_JSON_CONFIG_FILE_PATH
-              "${CMAKE_CURRENT_LIST_DIR}/sensors/ov02c10/cfg/ov02c10_default.json"
-              APPEND)
-      elseif(CONFIG_CAMERA_OV02C10_CUSTOMIZED_IPA_JSON_CONFIGURATION_FILE)
-          idf_build_set_property(ESP_IPA_JSON_CONFIG_FILE_PATH
-              ${CONFIG_CAMERA_OV02C10_CUSTOMIZED_IPA_JSON_CONFIGURATION_FILE_PATH}
-              APPEND)
-      endif()
+    list(APPEND srcs "sensors/ov02c10/ov02c10.c")
+    list(APPEND include_dirs "sensors/ov02c10/include")
+    list(APPEND priv_include_dirs "sensors/ov02c10/private_include")
 endif()
 
 if(CONFIG_CAMERA_SC202CS)

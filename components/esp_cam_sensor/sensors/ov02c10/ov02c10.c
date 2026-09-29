@@ -1,3 +1,17 @@
+/*
+ * SPDX-License-Identifier: GPL-2.0-only
+ *
+ * OV02C10 driver for esp_cam_sensor (not part of upstream esp-video-components).
+ *
+ * The register init values in private_include/ov02c10_settings.h are derived
+ * from Intel's OV02C10 Linux driver:
+ *   Copyright (c) 2022 Intel Corporation, author Hao Yao, GPL-2.0
+ *   https://github.com/intel/ipu6-drivers/blob/master/drivers/media/i2c/ov02c10.c
+ *   (later upstreamed to mainline Linux as drivers/media/i2c/ov02c10.c)
+ * They were adapted to the esp_cam_sensor API. Because of that origin this
+ * driver is GPL-2.0-only, unlike the Apache-2.0 files around it.
+ */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>

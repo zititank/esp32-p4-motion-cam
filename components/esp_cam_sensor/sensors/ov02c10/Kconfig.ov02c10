@@ -34,6 +34,12 @@ choice CAMERA_OV02C10_IPA_JSON_CONFIGURATION_FILE
         bool "Customized"
         help
             Points at a JSON file you specify with an absolute path below.
+
+    config CAMERA_OV02C10_NO_IPA_JSON_CONFIGURATION_FILE
+        bool "None"
+        help
+            Embeds no tuning file. The ISP runs uncalibrated and no V4L2
+            controls are exposed, which is how the August 2026 bring-up ran.
 endchoice
 
 config CAMERA_OV02C10_CUSTOMIZED_IPA_JSON_CONFIGURATION_FILE_PATH

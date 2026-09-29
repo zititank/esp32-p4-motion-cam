@@ -1,6 +1,6 @@
 dependencies:
-  espressif/esp_video: "^2.3.0"
-  espressif/esp_lcd_jd9365: "^2.0.0"
+  espressif/esp_video: "2.3.0"
+  espressif/esp_lcd_jd9365: "2.0.2"
   espressif/esp_cam_sensor:
     override_path: "../components/esp_cam_sensor"
   idf:
