@@ -1,0 +1,43 @@
+name: build
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  firmware:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build with ESP-IDF v5.4.4 for esp32p4
+        uses: espressif/esp-idf-ci-action@v1
+        with:
+          esp_idf_version: v5.4.4
+          target: esp32p4
+          path: '.'
+
+  host-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Unit tests (motion.c, overlay.c)
+        run: make -C test/host test
+
+      - name: Unit tests with AddressSanitizer / UBSan
+        run: make -C test/host asan
+
+  simulation:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install ffmpeg
+        run: sudo apt-get update && sudo apt-get install -y --no-install-recommends ffmpeg fontconfig
+
+      # Checks that motion_sim builds and every scene still runs. Byte-identical
+      # output isn't expected: Ubuntu's ffmpeg is a different version.
+      - name: Regenerate simulation assets
+        run: tools/sim/make_all.sh
