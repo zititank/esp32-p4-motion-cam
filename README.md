@@ -147,7 +147,7 @@ Board pins, clocks and panel timing are in `main/board_jc8012p4a1.h`; see [PORTI
 - **September 2026, not yet on the board:** build fixes, the ISP tuning file enabled (the one intentional runtime change), the split into modules, the motion detector and overlay, host tests, simulation and a CI workflow. None of this has run on the board. It's verified by compiling, host tests and simulation only.
 - **Build, September 2026, on my PC:** the firmware builds for the ESP32-P4 with a native ESP-IDF v5.4.4 install, with zero warnings. The app image is 529,232 bytes, so about half of the 1 MB app partition is still free; with `APP_MOTION_ENABLE=0` it's 524,512 bytes. All 391 host test checks pass, plain and with AddressSanitizer/UBSan. Getting there needed one more fix to the ISP tuning file; see the [engineering log](docs/ENGINEERING_LOG.md#ipa-json-crashed-the-esp_ipa-config-generator).
 - **Config:** the generated `sdkconfig` matches my August bring-up config on the settings that matter (chip revision, CPU clock, PSRAM, watchdog, sensor and ISP). The one deliberate difference is the log level, INFO instead of VERBOSE.
-- **CI:** the workflow in `.github/workflows/build.yml` runs the firmware build, the host tests and the simulation scripts on every push. It hasn't run on GitHub yet, so the badge above stays grey until the first push.
+- **CI:** the workflow in `.github/workflows/build.yml` runs the firmware build, the host tests and the simulation scripts on every push. All three jobs passed on the first push to GitHub (September 2026); the badge above shows the current state.
 
 When I have the board on my desk again, the next step is to flash this version, replace the simulated GIF with a real recording, and add the boot log.
 
